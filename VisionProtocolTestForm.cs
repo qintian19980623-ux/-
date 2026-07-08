@@ -151,7 +151,8 @@ namespace 通讯协议测试
                 Font = new Font("微软雅黑", FONT_SIZE_LARGE, FontStyle.Bold),
                 BackColor = COLOR_BG_SECONDARY,
                 ForeColor = COLOR_TEXT_PRIMARY,
-                DrawMode = TabDrawMode.OwnerDrawFixed
+                DrawMode = TabDrawMode.OwnerDrawFixed,
+                ItemSize = new Size(150, 25),
             };
             tabControl.DrawItem += TabControl_DrawItem;
             tabControl.Paint += TabControl_Paint;
