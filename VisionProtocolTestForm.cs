@@ -118,6 +118,10 @@ namespace 通讯协议测试
 
         private void InitializeComponent()
         {
+            // 启用DPI自动缩放 - 解决不同分辨率下UI布局差异问题
+            this.AutoScaleMode = AutoScaleMode.Dpi;
+            this.AutoScaleDimensions = new SizeF(96F, 96F);
+
             this.Text = "视觉运控通讯协议测试工具";
             this.Size = new Size(FORM_WIDTH, FORM_HEIGHT);
             this.StartPosition = FormStartPosition.CenterScreen;
