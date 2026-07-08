@@ -9,6 +9,7 @@
   <ItemGroup>
     <Compile Remove="VisionWrapperUsageExample.cs" />
     <Compile Remove="VisionMotionProtocolUsageExample.cs" />
+    <Compile Remove="VisionWrapper.cs" />
   </ItemGroup>
 
 </Project>

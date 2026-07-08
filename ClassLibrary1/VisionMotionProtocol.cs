@@ -244,11 +244,12 @@ namespace ClassLibrary1
         /// </summary>
         /// <param name="cameraNo">相机编号</param>
         /// <param name="gripperNo">吸嘴/夹爪编号</param>
-        /// <param name="currentPosition">当前位置坐标，格式："X,Y,R"</param>
+        /// <param name="position1">拍照位1坐标，格式："X,Y,R"</param>
+        /// <param name="position2">拍照位2坐标，格式："X,Y,R"</param>
         /// <returns>发送成功返回true，失败返回false</returns>
-        public async Task<bool> SendT3Async(int cameraNo, int gripperNo, string currentPosition)
+        public async Task<bool> SendT3Async(int cameraNo, int gripperNo, string position1, string position2)
         {
-            string command = $"T3;{cameraNo};{gripperNo};{currentPosition}";
+            string command = $"T3;{cameraNo};{gripperNo};{position1};{position2}";
             return await SendCommandAsync(command);
         }
 

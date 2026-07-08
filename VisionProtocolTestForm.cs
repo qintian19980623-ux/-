@@ -970,25 +970,32 @@ namespace 通讯协议测试
             var btnSend = CreateStyledButton("发送 T3 命令", 150, 35, isPrimary: true);
             var txtResult = CreateStyledTextBox(multiline: true, readOnly: true);
 
-            // 使用通用事件处理方法
+            // T3需要发送两个拍照位（一次性发送）
             btnSend.Click += async (s, e) =>
             {
-                await ExecuteProtocolCommand(cmbPort, btnSend, "发送", async (protocol) =>
+                var protocol = GetActiveProtocol(cmbPort);
+                if (protocol == null) return;
+
+                string originalText = btnSend.Text;
+                try
                 {
-                    // 发送拍照位1
-                    await protocol.SendT3Async(GetComboValue(cmbCamera), GetComboValue(cmbGripper), txtPosition1.Text);
-                    var response1 = await protocol.ReceiveT3Async();
-                    string result1 = $"T3拍照位1 - {(response1.Success ? "成功" : "失败")};{response1.ResultCode};{response1.X},{response1.Y},{response1.R}";
+                    btnSend.Enabled = false;
+                    btnSend.Text = "发送中...";
 
-                    await Task.Delay(300);
-
-                    // 发送拍照位2
-                    await protocol.SendT3Async(GetComboValue(cmbCamera), GetComboValue(cmbGripper), txtPosition2.Text);
-                    var response2 = await protocol.ReceiveT3Async();
-                    string result2 = $"T3拍照位2 - {(response2.Success ? "成功" : "失败")};{response2.ResultCode};{response2.X},{response2.Y},{response2.R}";
-
-                    return result1 + "\n" + result2;
-                });
+                    // 一次性发送两个拍照位
+                    await protocol.SendT3Async(GetComboValue(cmbCamera), GetComboValue(cmbGripper), txtPosition1.Text, txtPosition2.Text);
+                    var response = await protocol.ReceiveT3Async();
+                    ShowResult($"T3结果 - {(response.Success ? "成功" : "失败")};{response.ResultCode};{response.X},{response.Y},{response.R}");
+                }
+                catch (Exception ex)
+                {
+                    ShowResult($"T3发送异常: {ex.Message}");
+                }
+                finally
+                {
+                    btnSend.Enabled = true;
+                    btnSend.Text = originalText;
+                }
             };
 
             layout.Controls.Add(lblCamera, 0, 0);
@@ -1319,7 +1326,7 @@ namespace 通讯协议测试
 
                     if (response.XCoordinates != null && response.YCoordinates != null && response.XCoordinates.Length > 0)
                     {
-                        result += $"\n {response.XCoordinates.Length}\n;";
+                        result += $"\n{response.XCoordinates.Length}\n;";
                         for (int i = 0; i < response.XCoordinates.Length; i++)
                         {
                             result += $"{response.XCoordinates[i]},{response.YCoordinates[i]}\n;";
