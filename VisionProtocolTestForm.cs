@@ -152,7 +152,7 @@ namespace 通讯协议测试
                 BackColor = COLOR_BG_SECONDARY,
                 ForeColor = COLOR_TEXT_PRIMARY,
                 DrawMode = TabDrawMode.OwnerDrawFixed,
-                ItemSize = new Size(250, 25),
+                SizeMode = TabSizeMode.FillToRight,
             };
             tabControl.DrawItem += TabControl_DrawItem;
             tabControl.Paint += TabControl_Paint;
@@ -976,7 +976,7 @@ namespace 通讯协议测试
             cmbGripper.Dock = DockStyle.Top;
 
             var lblPosition1 = CreateStyledLabel("拍照位1(X,Y,R):");
-            var txtPosition1 = CreateStyledTextBox(multiline: false, readOnly: false, defaultText: "150.0,250.0,0.0");
+            var txtPosition1 = CreateStyledTextBox(multiline: false, readOnly: false, defaultText: "150.0,300.0,0.0");
             txtPosition1.Width = 300;
 
             var lblPosition2 = CreateStyledLabel("拍照位2(X,Y,R):");
