@@ -152,7 +152,7 @@ namespace 通讯协议测试
                 BackColor = COLOR_BG_SECONDARY,
                 ForeColor = COLOR_TEXT_PRIMARY,
                 DrawMode = TabDrawMode.OwnerDrawFixed,
-                ItemSize = new Size(150, 25),
+                ItemSize = new Size(250, 25),
             };
             tabControl.DrawItem += TabControl_DrawItem;
             tabControl.Paint += TabControl_Paint;
