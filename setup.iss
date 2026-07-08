@@ -4,7 +4,7 @@
 #define MyAppVersion "2.0"
 #define MyAppPublisher "鼎茂"
 #define MyAppExeName "通讯协议测试.exe"
-#define MyAppSourceDir "publish"
+#define MyAppSourceDir "bin\Release\net10.0-windows\win-x64\publish"
 
 [Setup]
 ; 应用程序基本信息

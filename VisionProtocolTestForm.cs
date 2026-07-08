@@ -665,16 +665,16 @@ namespace 通讯协议测试
             layout.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, INPUT_COLUMN_WIDTH));
             layout.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, LABEL_COLUMN_WIDTH_WIDE));
             layout.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
-            layout.RowStyles.Add(new RowStyle(SizeType.Absolute, ROW_HEIGHT_LARGE));
-            layout.RowStyles.Add(new RowStyle(SizeType.Absolute, ROW_HEIGHT_LARGE));
-            layout.RowStyles.Add(new RowStyle(SizeType.Absolute, ROW_HEIGHT_SMALL));
-            layout.RowStyles.Add(new RowStyle(SizeType.Absolute, ROW_HEIGHT_LARGE));
-            layout.RowStyles.Add(new RowStyle(SizeType.Absolute, ROW_HEIGHT_LARGE));
-            layout.RowStyles.Add(new RowStyle(SizeType.Absolute, ROW_HEIGHT_SPACING));
-            layout.RowStyles.Add(new RowStyle(SizeType.Absolute, ROW_HEIGHT_SMALL));
-            layout.RowStyles.Add(new RowStyle(SizeType.Absolute, ROW_HEIGHT_SPACING));
-            layout.RowStyles.Add(new RowStyle(SizeType.Absolute, ROW_HEIGHT_BUTTON));
-            layout.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
+            layout.RowStyles.Add(new RowStyle(SizeType.Absolute, ROW_HEIGHT_LARGE));      // 第0行
+            layout.RowStyles.Add(new RowStyle(SizeType.Absolute, ROW_HEIGHT_LARGE));      // 第1行
+            layout.RowStyles.Add(new RowStyle(SizeType.Absolute, ROW_HEIGHT_SMALL));      // 第2行
+            layout.RowStyles.Add(new RowStyle(SizeType.Absolute, ROW_HEIGHT_LARGE));      // 第3行
+            layout.RowStyles.Add(new RowStyle(SizeType.Absolute, ROW_HEIGHT_BUTTON));     // 第4行：按钮
+            layout.RowStyles.Add(new RowStyle(SizeType.Percent, 20F));                    // 第5行：结果开始
+            layout.RowStyles.Add(new RowStyle(SizeType.Percent, 20F));                    // 第6行
+            layout.RowStyles.Add(new RowStyle(SizeType.Percent, 20F));                    // 第7行
+            layout.RowStyles.Add(new RowStyle(SizeType.Percent, 20F));                    // 第8行
+            layout.RowStyles.Add(new RowStyle(SizeType.Percent, 20F));                    // 第9行
 
             var lblCamera = new Label { Text = "相机:", Dock = DockStyle.Fill, TextAlign = ContentAlignment.MiddleLeft, Font = new Font("微软雅黑", FONT_SIZE_NORMAL, FontStyle.Bold), ForeColor = COLOR_TEXT_PRIMARY, BackColor = Color.Transparent };
             var cmbCamera = CreateCameraCombo(1);
@@ -897,24 +897,25 @@ namespace 通讯协议测试
             //layout.Controls.Add(lblSep1, 0, 2);
             //layout.SetColumnSpan(lblSep1, 4);
 
-            layout.Controls.Add(lblCenter, 0, 3);
-            layout.Controls.Add(txtCenter, 1, 3);
-            layout.Controls.Add(lblXDir, 2, 3);
-            layout.Controls.Add(chkXDir, 3, 3);
+            layout.Controls.Add(lblCenter, 0, 2);
+            layout.Controls.Add(txtCenter, 1, 2);
+            layout.Controls.Add(lblXDir, 2, 2);
+            layout.Controls.Add(chkXDir, 3, 2);
 
-            layout.Controls.Add(lblYDir, 0, 4);
-            layout.Controls.Add(chkYDir, 1, 4);
-            layout.Controls.Add(lblRotateAngle, 2, 4);
-            layout.Controls.Add(txtRotateAngle, 3, 4);
+            layout.Controls.Add(lblYDir, 0, 3);
+            layout.Controls.Add(chkYDir, 1, 3);
+            layout.Controls.Add(lblRotateAngle, 2, 3);
+            layout.Controls.Add(txtRotateAngle, 3, 3);
 
             //layout.Controls.Add(lblSep2, 0, 6);
             //layout.SetColumnSpan(lblSep2, 4);
 
-            layout.Controls.Add(btnPanel, 0, 8);
+            layout.Controls.Add(btnPanel, 0, 4);
             layout.SetColumnSpan(btnPanel, 4);
 
-            layout.Controls.Add(txtResult, 0, 9);
+            layout.Controls.Add(txtResult, 0, 5);
             layout.SetColumnSpan(txtResult, 4);
+            layout.SetRowSpan(txtResult, 5);  // 跨越第5-9行，共5行
 
             tab.Controls.Add(CreatePortSelectorPanel(cmbPort));
             tab.Controls.Add(layout);
@@ -1331,7 +1332,7 @@ namespace 通讯协议测试
                         {
                             result += $"{response.XCoordinates[i]},{response.YCoordinates[i]}\n;";
                         }
-                        result += "R: " + response.R + "\n";
+                        result += "R:" + response.R + "\n";
                     }
                     ShowResult(result);
                 }
