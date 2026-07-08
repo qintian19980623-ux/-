@@ -590,6 +590,8 @@ namespace 通讯协议测试
             return combo.SelectedIndex + 1;
         }
 
+        #region T1-上下相机映射
+
         private TabPage CreateT1Tab()
         {
             var tab = new TabPage("T1-上下相机映射") { BackColor = COLOR_BG_SECONDARY };
@@ -646,6 +648,10 @@ namespace 通讯协议测试
 
             return tab;
         }
+
+        #endregion
+
+        #region T2-九点标定
 
         private TabPage CreateT2Tab()
         {
@@ -927,6 +933,10 @@ namespace 通讯协议测试
             return tab;
         }
 
+        #endregion
+
+        #region T3-吸嘴夹爪标定
+
         private TabPage CreateT3Tab()
         {
             var tab = new TabPage("T3-吸嘴夹爪标定") { BackColor = COLOR_BG_SECONDARY };
@@ -1022,6 +1032,10 @@ namespace 通讯协议测试
             return tab;
         }
 
+        #endregion
+
+        #region T4-管壳模组上下相机对齐
+
         private TabPage CreateT4Tab()
         {
             var tab = new TabPage("T4-管壳模组上下相机对齐") { BackColor = COLOR_BG_SECONDARY };
@@ -1094,6 +1108,10 @@ namespace 通讯协议测试
 
             return tab;
         }
+
+        #endregion
+
+        #region T5-管壳检测模组自动引导
 
         private TabPage CreateT5Tab()
         {
@@ -1175,6 +1193,10 @@ namespace 通讯协议测试
             return tab;
         }
 
+        #endregion
+
+        #region T6-锗窗检测模组自动引导
+
         private TabPage CreateT6Tab()
         {
             var tab = new TabPage("T6-锗窗检测模组自动引导") { BackColor = COLOR_BG_SECONDARY };
@@ -1254,6 +1276,10 @@ namespace 通讯协议测试
 
             return tab;
         }
+
+        #endregion
+
+        #region T7-锗窗取放料对位
 
         private TabPage CreateT7Tab()
         {
@@ -1366,6 +1392,10 @@ namespace 通讯协议测试
             return tab;
         }
 
+        #endregion
+
+        #region T8-出料载具穴位对齐图心
+
         private TabPage CreateT8Tab()
         {
             var tab = new TabPage("T8-出料载具穴位对齐图心") { BackColor = COLOR_BG_SECONDARY };
@@ -1442,6 +1472,8 @@ namespace 通讯协议测试
 
             return tab;
         }
+
+        #endregion
 
         private VisionMotionProtocol? GetActiveProtocol(ComboBox cmbPort)
         {
