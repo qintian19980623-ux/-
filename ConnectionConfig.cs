@@ -1,4 +1,6 @@
+using System;
 using System.Collections.Generic;
+using System.IO;
 
 namespace 通讯协议测试
 {
@@ -33,8 +35,24 @@ namespace 通讯协议测试
         public int AoiServerPort { get; set; } = 8888;
 
         /// <summary>
-        /// 配置文件默认路径
+        /// 配置文件默认路径 - 保存在用户AppData目录
+        /// 路径示例: C:\Users\用户名\AppData\Local\视觉运控通讯协议测试\PortConfig.json
         /// </summary>
-        public const string DefaultConfigPath = "PortConfig.json";
+        public static string DefaultConfigPath
+        {
+            get
+            {
+                string appDataPath = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
+                string appFolder = Path.Combine(appDataPath, "视觉运控通讯协议测试");
+
+                // 确保目录存在
+                if (!Directory.Exists(appFolder))
+                {
+                    Directory.CreateDirectory(appFolder);
+                }
+
+                return Path.Combine(appFolder, "PortConfig.json");
+            }
+        }
     }
 }
