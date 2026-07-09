@@ -130,6 +130,12 @@ namespace 通讯协议测试
                     kvp.Value.SelectedIndex = index;
                 }
             }
+
+            // 恢复AOI服务器配置
+            if (txtAoiServer != null)
+            {
+                txtAoiServer.Text = $"{config.AoiServerIP}:{config.AoiServerPort}";
+            }
         }
 
         #endregion
