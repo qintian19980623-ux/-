@@ -368,43 +368,57 @@ namespace 通讯协议测试
         private TabPage CreateT2Tab()
         {
             var creator = new ProtocolTabCreator(protocolService, configService, LogMessage, ShowResult);
-            return creator.CreateT2Tab();
+            var tab = creator.CreateT2Tab();
+            tabPortSelectors["T2"] = tab.Controls.OfType<Panel>().FirstOrDefault()?.Controls.OfType<ComboBox>().FirstOrDefault();
+            return tab;
         }
 
         private TabPage CreateT3Tab()
         {
             var creator = new ProtocolTabCreator(protocolService, configService, LogMessage, ShowResult);
-            return creator.CreateT3Tab();
+            var tab = creator.CreateT3Tab();
+            tabPortSelectors["T3"] = tab.Controls.OfType<Panel>().FirstOrDefault()?.Controls.OfType<ComboBox>().FirstOrDefault();
+            return tab;
         }
 
         private TabPage CreateT4Tab()
         {
             var creator = new ProtocolTabCreator(protocolService, configService, LogMessage, ShowResult);
-            return creator.CreateT4Tab();
+            var tab = creator.CreateT4Tab();
+            tabPortSelectors["T4"] = tab.Controls.OfType<Panel>().FirstOrDefault()?.Controls.OfType<ComboBox>().FirstOrDefault();
+            return tab;
         }
 
         private TabPage CreateT5Tab()
         {
             var creator = new ProtocolTabCreator(protocolService, configService, LogMessage, ShowResult);
-            return creator.CreateT5Tab();
+            var tab = creator.CreateT5Tab();
+            tabPortSelectors["T5"] = tab.Controls.OfType<Panel>().FirstOrDefault()?.Controls.OfType<ComboBox>().FirstOrDefault();
+            return tab;
         }
 
         private TabPage CreateT6Tab()
         {
             var creator = new ProtocolTabCreator(protocolService, configService, LogMessage, ShowResult);
-            return creator.CreateT6Tab();
+            var tab = creator.CreateT6Tab();
+            tabPortSelectors["T6"] = tab.Controls.OfType<Panel>().FirstOrDefault()?.Controls.OfType<ComboBox>().FirstOrDefault();
+            return tab;
         }
 
         private TabPage CreateT7Tab()
         {
             var creator = new ProtocolTabCreator(protocolService, configService, LogMessage, ShowResult);
-            return creator.CreateT7Tab();
+            var tab = creator.CreateT7Tab();
+            tabPortSelectors["T7"] = tab.Controls.OfType<Panel>().FirstOrDefault()?.Controls.OfType<ComboBox>().FirstOrDefault();
+            return tab;
         }
 
         private TabPage CreateT8Tab()
         {
             var creator = new ProtocolTabCreator(protocolService, configService, LogMessage, ShowResult);
-            return creator.CreateT8Tab();
+            var tab = creator.CreateT8Tab();
+            tabPortSelectors["T8"] = tab.Controls.OfType<Panel>().FirstOrDefault()?.Controls.OfType<ComboBox>().FirstOrDefault();
+            return tab;
         }
 
         #endregion
