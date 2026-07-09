@@ -438,22 +438,15 @@ namespace 通讯协议测试
                 defaultText: $"{config.AoiServerIP}:{config.AoiServerPort}");
             txtAoiServer.Width = 200;
 
-            // 当AOI服务器地址失去焦点时保存配置
+            // 当AOI服务器地址改变或失去焦点时保存配置
+            txtAoiServer.TextChanged += (s, e) =>
+            {
+                SaveAOIServerConfig();
+            };
+
             txtAoiServer.Leave += (s, e) =>
             {
-                if (!string.IsNullOrEmpty(txtAoiServer.Text) && txtAoiServer.Text.Contains(':'))
-                {
-                    var serverInfo = txtAoiServer.Text.Split(':');
-                    if (serverInfo.Length == 2)
-                    {
-                        string ip = serverInfo[0].Trim();
-                        if (int.TryParse(serverInfo[1].Trim(), out int port))
-                        {
-                            configService.UpdateAOIServer(ip, port);
-                            configService.SaveConfig(configService.GetConfig());
-                        }
-                    }
-                }
+                SaveAOIServerConfig();
             };
 
             btnAoiConnect = UIHelper.CreateStyledButton("连接AOI", 120, 35, isPrimary: true);
@@ -745,6 +738,30 @@ namespace 通讯协议测试
 
         #endregion
 
+        #region AOI配置保存
+
+        /// <summary>
+        /// 保存AOI服务器配置
+        /// </summary>
+        private void SaveAOIServerConfig()
+        {
+            if (txtAoiServer != null && !string.IsNullOrEmpty(txtAoiServer.Text) && txtAoiServer.Text.Contains(':'))
+            {
+                var serverInfo = txtAoiServer.Text.Split(':');
+                if (serverInfo.Length == 2)
+                {
+                    string ip = serverInfo[0].Trim();
+                    if (int.TryParse(serverInfo[1].Trim(), out int port))
+                    {
+                        configService.UpdateAOIServer(ip, port);
+                        configService.SaveConfig(configService.GetConfig());
+                    }
+                }
+            }
+        }
+
+        #endregion
+
         #region 窗体关闭
 
         protected override void OnFormClosing(FormClosingEventArgs e)
@@ -752,18 +769,7 @@ namespace 通讯协议测试
             try
             {
                 // 保存AOI服务器配置
-                if (txtAoiServer != null && !string.IsNullOrEmpty(txtAoiServer.Text))
-                {
-                    var serverInfo = txtAoiServer.Text.Split(':');
-                    if (serverInfo.Length == 2)
-                    {
-                        string ip = serverInfo[0];
-                        if (int.TryParse(serverInfo[1], out int port))
-                        {
-                            configService.UpdateAOIServer(ip, port);
-                        }
-                    }
-                }
+                SaveAOIServerConfig();
 
                 // 保存配置到文件
                 configService.SaveConfig(configService.GetConfig());
