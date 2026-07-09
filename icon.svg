@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="256" height="256">
+  <defs>
+    <linearGradient id="bgGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1a237e;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#0d47a1;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="waveGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#00e5ff;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#00b0ff;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#0091ea;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+
+  <!-- 圆角矩形背景 -->
+  <rect x="8" y="8" width="240" height="240" rx="48" ry="48" fill="url(#bgGradient)"/>
+
+  <!-- 外圈发光效果 -->
+  <rect x="8" y="8" width="240" height="240" rx="48" ry="48" fill="none" stroke="#00e5ff" stroke-width="2" opacity="0.3"/>
+
+  <!-- 数据传输波形 - 主波形 -->
+  <path d="M 40 128 L 60 128 L 70 80 L 80 176 L 90 80 L 100 128 L 120 128 L 130 100 L 140 156 L 150 100 L 160 128 L 180 128 L 190 92 L 200 164 L 210 92 L 216 128"
+        fill="none" stroke="url(#waveGradient)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <!-- 辅助波形 - 上方 -->
+  <path d="M 40 90 L 60 90 L 70 70 L 80 110 L 90 70 L 100 90 L 120 90 L 130 80 L 140 100 L 150 80 L 160 90 L 180 90 L 190 75 L 200 105 L 210 75 L 216 90"
+        fill="none" stroke="#00e5ff" stroke-width="2" stroke-linecap="round" opacity="0.5"/>
+
+  <!-- 辅助波形 - 下方 -->
+  <path d="M 40 166 L 60 166 L 70 146 L 80 186 L 90 146 L 100 166 L 120 166 L 130 156 L 140 176 L 150 156 L 160 166 L 180 166 L 190 151 L 200 181 L 210 151 L 216 166"
+        fill="none" stroke="#00e5ff" stroke-width="2" stroke-linecap="round" opacity="0.5"/>
+
+  <!-- 电路连接点 -->
+  <circle cx="40" cy="128" r="4" fill="#00e5ff"/>
+  <circle cx="128" cy="128" r="4" fill="#00e5ff"/>
+  <circle cx="216" cy="128" r="4" fill="#00e5ff"/>
+
+  <!-- 数据流动效果 - 小圆点 -->
+  <circle cx="70" cy="80" r="3" fill="#00e5ff" opacity="0.8">
+    <animate attributeName="opacity" values="0.3;1;0.3" dur="1.5s" repeatCount="indefinite"/>
+  </circle>
+  <circle cx="140" cy="156" r="3" fill="#00e5ff" opacity="0.8">
+    <animate attributeName="opacity" values="1;0.3;1" dur="1.5s" repeatCount="indefinite"/>
+  </circle>
+  <circle cx="200" cy="164" r="3" fill="#00e5ff" opacity="0.8">
+    <animate attributeName="opacity" values="0.5;1;0.5" dur="1.5s" repeatCount="indefinite"/>
+  </circle>
+
+  <!-- 角落装饰线条 - 左上 -->
+  <path d="M 24 48 L 24 32 L 40 32" fill="none" stroke="#00e5ff" stroke-width="2" opacity="0.6"/>
+
+  <!-- 角落装饰线条 - 右上 -->
+  <path d="M 216 32 L 232 32 L 232 48" fill="none" stroke="#00e5ff" stroke-width="2" opacity="0.6"/>
+
+  <!-- 角落装饰线条 - 左下 -->
+  <path d="M 24 208 L 24 224 L 40 224" fill="none" stroke="#00e5ff" stroke-width="2" opacity="0.6"/>
+
+  <!-- 角落装饰线条 - 右下 -->
+  <path d="M 216 224 L 232 224 L 232 208" fill="none" stroke="#00e5ff" stroke-width="2" opacity="0.6"/>
+</svg>
