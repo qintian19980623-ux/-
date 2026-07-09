@@ -40,8 +40,10 @@ namespace 通讯协议测试
             {
                 currentConfig = config;
                 string json = JsonSerializer.Serialize(config, new JsonSerializerOptions { WriteIndented = true });
-                File.WriteAllText(configFilePath, json);
-                OnLog?.Invoke("配置保存成功", false);
+                string fullPath = Path.GetFullPath(configFilePath);
+                File.WriteAllText(fullPath, json);
+                OnLog?.Invoke($"配置保存成功: {fullPath}", false);
+                OnLog?.Invoke($"AOI服务器: {config.AoiServerIP}:{config.AoiServerPort}", false);
                 return true;
             }
             catch (Exception ex)
