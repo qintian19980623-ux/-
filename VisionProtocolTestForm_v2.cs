@@ -30,6 +30,7 @@ namespace 通讯协议测试
         private Dictionary<int, Button> portButtons = new Dictionary<int, Button>();
         private Dictionary<string, ComboBox> tabPortSelectors = new Dictionary<string, ComboBox>();
         private Button btnAoiConnect; // AOI连接按钮
+        private TextBox txtAoiServer; // AOI服务器地址输入框
 
         #endregion
 
@@ -433,7 +434,7 @@ namespace 通讯协议测试
 
             var config = configService.GetConfig();
             var lblAoiServer = UIHelper.CreateStyledLabel("AOI服务器:");
-            var txtAoiServer = UIHelper.CreateStyledTextBox(multiline: false, readOnly: false,
+            txtAoiServer = UIHelper.CreateStyledTextBox(multiline: false, readOnly: false,
                 defaultText: $"{config.AoiServerIP}:{config.AoiServerPort}");
             txtAoiServer.Width = 200;
 
@@ -732,6 +733,24 @@ namespace 通讯协议测试
         {
             try
             {
+                // 保存AOI服务器配置
+                if (txtAoiServer != null && !string.IsNullOrEmpty(txtAoiServer.Text))
+                {
+                    var serverInfo = txtAoiServer.Text.Split(':');
+                    if (serverInfo.Length == 2)
+                    {
+                        string ip = serverInfo[0];
+                        if (int.TryParse(serverInfo[1], out int port))
+                        {
+                            configService.UpdateAOIServer(ip, port);
+                        }
+                    }
+                }
+
+                // 保存配置到文件
+                configService.SaveConfig(configService.GetConfig());
+
+                // 断开所有连接
                 protocolService.DisconnectAll();
                 aoiService.Disconnect();
             }
