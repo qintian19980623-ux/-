@@ -2,7 +2,7 @@ using System;
 using System.Drawing;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using ClassLibrary1;
+using VisionMotionProtocolLib;
 
 namespace 通讯协议测试
 {

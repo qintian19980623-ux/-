@@ -10,13 +10,13 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="ClassLibrary1\**" />
-    <EmbeddedResource Remove="ClassLibrary1\**" />
-    <None Remove="ClassLibrary1\**" />
+    <Compile Remove="VisionMotionProtocolLib\**" />
+    <EmbeddedResource Remove="VisionMotionProtocolLib\**" />
+    <None Remove="VisionMotionProtocolLib\**" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="ClassLibrary1\ClassLibrary1.csproj" />
+    <ProjectReference Include="VisionMotionProtocolLib\VisionMotionProtocolLib.csproj" />
   </ItemGroup>
 
 </Project>

@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using ClassLibrary1;
+using VisionMotionProtocolLib;
 
 namespace 通讯协议测试
 {

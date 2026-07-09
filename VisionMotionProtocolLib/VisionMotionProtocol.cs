@@ -4,7 +4,7 @@ using System.Net.Sockets;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ClassLibrary1
+namespace VisionMotionProtocolLib
 {
     /// <summary>
     /// 视觉运动控制通讯协议类
