@@ -1,7 +1,7 @@
 ; 视觉运控通讯协议测试工具 - Inno Setup 安装脚本
 
 #define MyAppName "视觉运控通讯协议测试工具"
-#define MyAppVersion "2.1"
+#define MyAppVersion "2.2"
 #define MyAppPublisher "鼎茂"
 #define MyAppExeName "通讯协议测试.exe"
 #define MyAppSourceDir "bin\Release\net10.0-windows\win-x64\publish"
